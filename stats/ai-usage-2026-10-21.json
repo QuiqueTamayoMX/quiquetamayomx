@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "cutoff_date": "2026-10-21",
+  "timezone": "America/Mexico_City",
+  "scope": "Partial aggregate of recoverable local Codex execution history associated with the owner's repositories",
+  "metric": "Unique turn_id across sessions and subagents; retain latest recorded turn_context per turn_id",
+  "denominator_identified_turns": 410,
+  "models": [
+    {
+      "model": "gpt-6.1-sol",
+      "turns": 298,
+      "percentage": 72.68
+    },
+    {
+      "model": "gpt-6-astra",
+      "turns": 76,
+      "percentage": 18.54
+    },
+    {
+      "model": "gpt-5.6-sol",
+      "turns": 19,
+      "percentage": 4.63
+    },
+    {
+      "model": "gpt-6-luna",
+      "turns": 13,
+      "percentage": 3.17
+    },
+    {
+      "model": "gpt-5.6-luna",
+      "turns": 4,
+      "percentage": 0.98
+    }
+  ],
+  "window": {
+    "first_event_utc": "2026-10-08T19:07:05.002Z",
+    "last_event_utc": "2026-10-21T19:38:36.989Z"
+  },
+  "coverage": {
+    "owned_repositories_reviewed": 11,
+    "repositories_with_observable_turns": 2,
+    "indexed_repository_sessions": 178,
+    "recoverable_session_files": 79,
+    "unavailable_session_files": 99
+  },
+  "excluded": {
+    "codex_auto_review_without_base_model": 5,
+    "other_tools_and_application_api_calls": "Not measured; no comparable usage records in this dataset"
+  },
+  "percentage_formula": "model identified turns / 410 * 100, rounded to two decimal places",
+  "limitations": [
+    "Partial dataset, not lifetime usage across all repositories",
+    "Not a measure of code authorship, tokens, time or spending",
+    "No recorded turn is assigned to a model using the latest model configured for its chat",
+    "Repositories without observable turns are unrepresented, not assigned zero usage",
+    "Manual dated snapshot; no scheduled refresh has been configured"
+  ],
+  "privacy": "Aggregates only; no prompts, conversations, tokens, credentials, local paths or session identifiers"
+}
