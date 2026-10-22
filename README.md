@@ -52,7 +52,32 @@ No vengo de una carrera de sistemas — aprendo en el camino, proyecto por proye
 
 Construyo con **OpenAI / Codex** y **Claude / Anthropic**, e integro **Gemini** en experiencias como la generación de avatares.
 
-*Actualizado el 21 de octubre de 2026.*
+**Sesiones registradas · corte: 21 de octubre de 2026 · Ciudad de México.**
+
+**Codex:** 134 sesiones asociadas a cinco proyectos, entre el 21 de septiembre y el 21 de octubre de 2026.
+
+| Último modelo registrado | Sesiones | Porcentaje |
+|---|---:|---:|
+| `gpt-6.1-sol` | 81 | 60,45 % |
+| `gpt-6-sol` | 14 | 10,45 % |
+| `gpt-6-astra` | 12 | 8,96 % |
+| `gpt-6-luna` | 12 | 8,96 % |
+| `gpt-5.6-sol` | 9 | 6,72 % |
+| `gpt-5.6-terra` | 4 | 2,99 % |
+| `gpt-5.6-luna` | 2 | 1,49 % |
+| **Total** | **134** | **100 %** |
+
+**Claude:** 10 sesiones asociadas a un proyecto, entre el 2 y el 11 de octubre de 2026.
+
+| Último modelo registrado | Sesiones | Porcentaje |
+|---|---:|---:|
+| `claude-opus-5-5` | 7 | 70,00 % |
+| `claude-sonnet-5-5` | 3 | 30,00 % |
+| **Total** | **10** | **100 %** |
+
+Cada sesión se cuenta una vez y se clasifica por su **último modelo registrado**; los porcentajes se calculan por separado para cada herramienta. Codex incluye chats de subagentes y excluye revisiones automáticas.
+
+Esta es una **muestra parcial del historial disponible**, no el uso total de todos mis proyectos. No mide código escrito, turnos, tokens ni gasto, ni reconstruye los cambios de modelo dentro de una sesión. Gemini, ChatGPT y las llamadas de IA de las aplicaciones quedan fuera de este cálculo. Los porcentajes pueden no sumar exactamente 100 % por redondeo. Actualización manual.
 
 ---
 
