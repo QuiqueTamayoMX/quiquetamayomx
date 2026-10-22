@@ -1,59 +1,84 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "cutoff_date": "2026-10-21",
   "timezone": "America/Mexico_City",
-  "scope": "Partial aggregate of recoverable local Codex execution history associated with the owner's repositories",
-  "metric": "Unique turn_id across sessions and subagents; retain latest recorded turn_context per turn_id",
-  "denominator_identified_turns": 410,
-  "models": [
-    {
-      "model": "gpt-6.1-sol",
-      "turns": 298,
-      "percentage": 72.68
-    },
-    {
-      "model": "gpt-6-astra",
-      "turns": 76,
-      "percentage": 18.54
-    },
-    {
-      "model": "gpt-5.6-sol",
-      "turns": 19,
-      "percentage": 4.63
-    },
-    {
-      "model": "gpt-6-luna",
-      "turns": 13,
-      "percentage": 3.17
-    },
-    {
-      "model": "gpt-5.6-luna",
-      "turns": 4,
-      "percentage": 0.98
-    }
-  ],
-  "window": {
-    "first_event_utc": "2026-10-08T19:07:05.002Z",
-    "last_event_utc": "2026-10-21T19:38:36.989Z"
+  "scope": "Partial local session history associated with the owner's projects; not lifetime usage across all repositories",
+  "metric": "One unique session or indexed chat classified by its last recorded model; percentages computed separately per tool",
+  "codex": {
+    "denominator_sessions": 134,
+    "models": [
+      {
+        "model": "gpt-6.1-sol",
+        "sessions": 81,
+        "percentage": 60.45
+      },
+      {
+        "model": "gpt-6-sol",
+        "sessions": 14,
+        "percentage": 10.45
+      },
+      {
+        "model": "gpt-6-astra",
+        "sessions": 12,
+        "percentage": 8.96
+      },
+      {
+        "model": "gpt-6-luna",
+        "sessions": 12,
+        "percentage": 8.96
+      },
+      {
+        "model": "gpt-5.6-sol",
+        "sessions": 9,
+        "percentage": 6.72
+      },
+      {
+        "model": "gpt-5.6-terra",
+        "sessions": 4,
+        "percentage": 2.99
+      },
+      {
+        "model": "gpt-5.6-luna",
+        "sessions": 2,
+        "percentage": 1.49
+      }
+    ],
+    "source": "Read-only local thread index; chat IDs including subagent chats",
+    "repository_count": 5,
+    "first_chat_created_utc": "2026-09-21T18:10:42+00:00",
+    "last_chat_updated_utc": "2026-10-22T03:12:50+00:00",
+    "excluded_automatic_reviewer_records": 44
   },
-  "coverage": {
-    "owned_repositories_reviewed": 11,
-    "repositories_with_observable_turns": 2,
-    "indexed_repository_sessions": 178,
-    "recoverable_session_files": 79,
-    "unavailable_session_files": 99
+  "claude": {
+    "denominator_sessions": 10,
+    "models": [
+      {
+        "model": "claude-opus-5-5",
+        "sessions": 7,
+        "percentage": 70
+      },
+      {
+        "model": "claude-sonnet-5-5",
+        "sessions": 3,
+        "percentage": 30
+      }
+    ],
+    "source": "Local assistant JSONL records, grouped by sessionId; last real assistant model observed within each session",
+    "repository_count": 1,
+    "first_event_utc": "2026-10-02T06:58:41.451Z",
+    "last_event_utc": "2026-10-11T09:54:33.183Z",
+    "excluded": "Synthetic models and API error messages; histories not attributable to an owned project"
   },
-  "excluded": {
-    "codex_auto_review_without_base_model": 5,
-    "other_tools_and_application_api_calls": "Not measured; no comparable usage records in this dataset"
-  },
-  "percentage_formula": "model identified turns / 410 * 100, rounded to two decimal places",
+  "percentage_formula": "sessions classified to model / tool's identified sessions * 100, rounded to two decimals",
   "limitations": [
-    "Partial dataset, not lifetime usage across all repositories",
-    "Not a measure of code authorship, tokens, time or spending",
-    "No recorded turn is assigned to a model using the latest model configured for its chat",
-    "Repositories without observable turns are unrepresented, not assigned zero usage",
-    "Manual dated snapshot; no scheduled refresh has been configured"
+    "Not lifetime usage across all repositories",
+    "Does not reconstruct model changes within a session",
+    "Not code authorship, turns, tokens, time or cost",
+    "Separate tool denominators; percentages are not a cross-provider usage comparison",
+    "Missing histories are unrepresented, not assigned zero usage",
+    "Gemini, ChatGPT and application API calls are not measured",
+    "Rounded percentages may not sum exactly to 100",
+    "Manual dated snapshot; no automatic refresh configured"
   ],
-  "privacy": "Aggregates only; no prompts, conversations, tokens, credentials, local paths or session identifiers"
+  "privacy": "Aggregates only; no project names, repository URLs, prompts, conversations, credentials, local paths or session identifiers"
 }
